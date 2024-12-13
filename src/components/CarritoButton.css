@@ -1,0 +1,98 @@
+/* src/components/CarritoButton.css */
+
+/* src/components/CarritoButton.css */
+
+.carrito-button {
+  position: fixed; /* Cambiado a fixed para mantener la posición en toda la página */
+  bottom: 20px;
+  right: 20px; /* Mantenerlo siempre en la esquina inferior derecha */
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  z-index: 1100; /* Aumentamos el z-index para asegurarnos que esté encima del carrito */
+  position: fixed; /* Importante para fijar su ubicación en la pantalla */
+}
+
+.carrito-count {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+}
+
+/* src/components/Carrito.css */
+
+.carrito-container {
+  position: fixed;
+  bottom: 80px; /* Posicionado justo encima del botón del carrito */
+  right: 20px;
+  width: 300px;
+  max-height: 500px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.carrito-item img {
+  width: 50px; /* Imagen pequeña para el carrito */
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.eliminar-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.boton-ir-pagar {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+}

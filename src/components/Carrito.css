@@ -1,0 +1,66 @@
+/* src/components/Carrito.css */
+
+.carrito-container {
+  position: fixed;
+  bottom: 80px; /* Posicionado justo encima del botón del carrito */
+  right: 20px;
+  width: 300px;
+  max-height: 500px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.carrito-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.carrito-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.carrito-item img {
+  width: 50px; /* Imagen pequeña para el carrito */
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.eliminar-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-left: auto;
+}
+
+.boton-ir-pagar {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+}

@@ -1,0 +1,123 @@
+/* src/Paginas/PerfilV.css */
+
+/* Producto en la lista */
+.producto-item-horizontal {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  position: relative; /* Necesario para posicionar el botón de editar */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.producto-imagen-horizontal {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.producto-info-horizontal {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 5px; /* Espacio uniforme entre los párrafos */
+}
+
+.producto-info-horizontal p {
+  margin: 5px 0;
+  font-size: 14px; /* Tamaño de fuente consistente */
+  line-height: 1.4;
+}
+
+.editar-producto-boton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.editar-producto-boton:hover {
+  color: #555;
+}
+
+/* Modal estilizado */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  padding: 25px 20px; /* Ajuste para dar espacio interno */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001; /* Para asegurarnos de que quede encima del fondo oscurecido */
+}
+
+.modal h2 {
+  margin-top: 0;
+  text-align: center; /* Centrado para mejor presentación */
+  margin-bottom: 15px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio uniforme entre campos del formulario */
+}
+
+.modal-form label {
+  font-weight: bold;
+  margin-bottom: 5px; /* Espacio entre la etiqueta y el campo */
+}
+
+.modal-form input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho */
+}
+
+/* Botones del modal */
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.modal-save-button, .modal-close-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-save-button {
+  background-color: #32703c;
+  color: white;
+}
+
+.modal-close-button {
+  background-color: #ccc;
+}
+
+/* Fondo oscurecido */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  z-index: 1000; /* Debe estar justo debajo del modal */
+}

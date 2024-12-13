@@ -1,0 +1,63 @@
+/* src/components/Navbar.css */
+
+.navbar-horizontal {
+    position: fixed;
+    top: 0;
+    left: 0; /* Asegura que la barra comience en la izquierda */
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #32703c;
+    padding: 10px 20px;
+    z-index: 1000;
+    box-sizing: border-box; /* Asegura que el padding no se sume al tamaño total */
+  }
+  
+  .navbar-logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .navbar-links {
+    display: flex;
+    list-style: none;
+    gap: 15px;
+    margin: 0; /* Elimina márgenes extra */
+    padding: 0; /* Elimina padding extra */
+    align-items: center; /* Asegura que todos los elementos estén alineados verticalmente */
+  }
+  
+  .navbar-links li a,
+  .navbar-logout {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: background 0.3s;
+    font-size: 16px;
+    display: flex;
+    align-items: center; /* Centra el contenido verticalmente */
+  }
+  
+  .navbar-links li a:hover,
+  .navbar-logout:hover {
+    background-color: #555;
+  }
+  
+  .navbar-logout {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+  
+/* Ajustar el contenido para compensar la altura de la barra de navegación */
+body {
+  margin: 0;
+  padding-top: 80px; /* Ajusta este valor para que el contenido principal quede debajo del navbar */
+  box-sizing: border-box;
+}

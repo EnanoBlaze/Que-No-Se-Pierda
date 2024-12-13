@@ -1,0 +1,176 @@
+/* Contenedor del login */
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%; /* Asegura que el formulario tome el 100% del contenedor */
+}
+
+.login-form label {
+  font-size: 16px;
+  text-align: left;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%; /* Ajusta el ancho de los inputs para que se ajusten al contenedor */
+  box-sizing: border-box; /* Incluye el padding y borde dentro del ancho */
+}
+
+/* Botón de Iniciar Sesión */
+.submit-button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box; /* Incluye el padding y borde dentro del ancho */
+}
+
+.submit-button:hover {
+  background-color: #218838;
+}
+
+/* Estilos del botón de Google */
+.google-login {
+  margin-top: 20px;
+}
+
+.google-button {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  box-sizing: border-box; /* Incluye el padding y borde dentro del ancho */
+}
+
+.google-button:hover {
+  background-color: #f1f1f1;
+}
+
+.google-logo {
+  width: 24px; /* Ajusta el tamaño del logo de Google */
+  height: auto;
+  margin-right: 10px; /* Añade espacio entre el logo y el texto */
+}
+
+/* Estilos del botón de Registro */
+.register-redirect {
+  margin-top: 20px;
+}
+
+.register-button {
+  padding: 10px;
+  background-color: #1a3e72; /* Azul marino */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  box-sizing: border-box; /* Incluye el padding y borde dentro del ancho */
+}
+
+.register-button:hover {
+  background-color: #16315a; /* Azul marino más oscuro para hover */
+}
+
+/* Estilos del modal (opcional si tienes un modal) */
+.Modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.Modal h2 {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.Modal label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.Modal input, .Modal select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Incluye el padding y borde dentro del ancho */
+}
+
+.Modal button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.Modal button:hover {
+  background-color: #218838;
+}
+
+.Overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

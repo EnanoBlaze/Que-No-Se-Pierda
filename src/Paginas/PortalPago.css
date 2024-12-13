@@ -1,0 +1,52 @@
+/* src/Paginas/PortalPago.css */
+
+.portal-pago-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.productos-lista {
+  max-height: 300px; /* Altura máxima del contenedor */
+  overflow-y: auto; /* Barra de desplazamiento para el contenido */
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.producto-item {
+  padding: 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.producto-item:last-child {
+  border-bottom: none;
+}
+
+h3, p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h3 {
+  font-weight: bold;
+}
+
+.portal-pago-container h3 {
+  margin-top: 20px;
+}
+
+.paypal-buttons-container {
+  margin-top: 20px;
+  text-align: center;
+}

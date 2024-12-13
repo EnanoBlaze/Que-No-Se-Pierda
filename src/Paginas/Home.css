@@ -1,0 +1,94 @@
+/* src/Paginas/Home.css */
+
+/* Contenedor Principal */
+.home-container {
+  margin-top: 0;
+  max-width: 1200px;
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Contenedor Scroll para Productos */
+.productos-scroll-container {
+  max-height: 600px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Productos Grid */
+.productos-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Tarjeta de Producto */
+.producto-card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Imagen del Producto */
+.product-image {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+/* Precio Original */
+.precio-original {
+  text-decoration: line-through;
+  color: #a0a0a0;
+  font-size: 14px;
+}
+
+/* Precio con Descuento */
+.precio-descuento {
+  color: red;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Botón de Agregar al Carrito */
+.add-to-cart-button {
+  background-color: #007bff;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+
+/* Banner de producto agotado */
+.agotado-banner {
+  background-color: #ff4c4c;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Fecha de Vencimiento */
+.fecha-vencimiento {
+  margin-top: 10px;
+  font-size: 14px;
+}

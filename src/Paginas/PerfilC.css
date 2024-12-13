@@ -1,0 +1,125 @@
+/* src/Paginas/PerfilC.css */
+
+.perfil-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #32703c;
+}
+
+.boletas-container {
+  margin-top: 20px;
+}
+
+.boletas-titulo {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.boletas-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.boletas-lista li {
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.boletas-lista li:hover {
+  background-color: #f0f0f0;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  overflow: auto;
+  max-height: 90vh;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+#boleta-pdf {
+  margin-bottom: 20px;
+}
+
+#boleta-pdf h2 {
+  text-align: center;
+  color: #32703c;
+  margin-bottom: 15px;
+}
+
+#boleta-pdf p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+#boleta-pdf ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+#boleta-pdf li {
+  background-color: #f8f8f8;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.modal-close-button,
+.modal-download-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.modal-close-button {
+  background-color: #ccc;
+}
+
+.modal-download-button {
+  background-color: #32703c;
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.modal-download-button:hover {
+  background-color: #285e2e;
+}
