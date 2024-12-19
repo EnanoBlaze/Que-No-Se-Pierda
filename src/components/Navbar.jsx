@@ -1,10 +1,10 @@
 // src/components/Navbar.js
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../firebase';
-import './Navbar.css';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import "./Navbar.css";
 
 const Navbar = () => {
   const [user, setUser] = useState(null);
@@ -17,7 +17,7 @@ const Navbar = () => {
       if (currentUser) {
         setUser(currentUser);
         // Consultar Firestore para obtener el tipo de usuario
-        const userDocRef = doc(db, 'users', currentUser.uid);
+        const userDocRef = doc(db, "users", currentUser.uid);
         const userDoc = await getDoc(userDocRef);
         if (userDoc.exists()) {
           setUserType(userDoc.data().userType);
@@ -35,7 +35,7 @@ const Navbar = () => {
     signOut(auth)
       .then(() => {
         console.log("Sesión cerrada con éxito");
-        navigate('/login');
+        navigate("/login");
       })
       .catch((error) => {
         console.error("Error al cerrar sesión: ", error);
@@ -45,16 +45,26 @@ const Navbar = () => {
   return (
     <nav className="navbar-horizontal">
       <div className="navbar-logo">
-        <Link to="/home">QUE NO SE PIERDA</Link>
+        <Link to="/">QUE NO SE PIERDA</Link>
       </div>
       <ul className="navbar-links">
-        {userType === 'vendedor' && (
+        {userType === "vendedor" && (
           <li>
             <Link to="/subir-producto">Subir Productos</Link>
           </li>
         )}
         <li>
-          <Link to={user ? (userType === 'vendedor' ? "/perfil-vendedor" : "/perfil-cliente") : "/login"}>Perfil</Link>
+          <Link
+            to={
+              user
+                ? userType === "vendedor"
+                  ? "/perfil-vendedor"
+                  : "/perfil-cliente"
+                : "/login"
+            }
+          >
+            Perfil
+          </Link>
         </li>
         <li>
           <Link to="/contacto">Contáctanos</Link>

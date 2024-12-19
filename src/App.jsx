@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { db, auth } from "./firebase";
-import Navbar from "./components/Navbar";
 import Home from "./Paginas/Home";
+import Tienda from "./Paginas/Tienda";
 import PerfilV from "./Paginas/PerfilV";
 import PerfilC from "./Paginas/PerfilC";
 import Login from "./Paginas/Login";
@@ -18,11 +18,11 @@ import Register from "./Paginas/Register";
 import SubirProducto from "./Paginas/SubirProducto";
 import CarritoButton from "./components/CarritoButton";
 import PortalPago from "./Paginas/PortalPago";
+import { Layout } from "./layout";
 
 function AppContent() {
   const location = useLocation();
   const navigate = useNavigate();
-  const noNavbarRoutes = ["/login", "/register"];
   const noCarritoRoutes = ["/login", "/register", "/portal-pago"]; // Rutas sin carrito
   const [userRole, setUserRole] = useState(null);
 
@@ -49,9 +49,9 @@ function AppContent() {
 
   return (
     <>
-      {!noNavbarRoutes.includes(location.pathname) && <Navbar />}
       <Routes>
-        <Route path="/home" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/tienda" element={<Tienda />} />
         <Route path="/perfil-vendedor" element={<PerfilV />} />
         <Route path="/perfil-cliente" element={<PerfilC />} />
         <Route path="/login" element={<Login />} />
@@ -67,9 +67,10 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <Layout>
+        <AppContent />
+      </Layout>
     </Router>
   );
 }
-
 export default App;

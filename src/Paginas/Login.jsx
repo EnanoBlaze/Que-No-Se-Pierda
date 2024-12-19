@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import googleLogo from "../assets/Google-Logo.png"; // Importa la imagen de Google
 import "./Login.css";
+import { Layout } from "../layout";
 
 Modal.setAppElement("#root"); // Asegura que el modal se asocie correctamente con la raíz de la app
 
@@ -37,7 +38,7 @@ function Login() {
       );
       const user = userCredential.user;
       console.log("Usuario autenticado:", user);
-      navigate("/home"); // Redirige a Home después de iniciar sesión
+      navigate("/"); // Redirige a Home después de iniciar sesión
     } catch (error) {
       setError(error.message);
     }
@@ -61,7 +62,7 @@ function Login() {
             "Usuario ya tiene tipo registrado:",
             userDoc.data().userType,
           );
-          navigate("/home");
+          navigate("/tienda");
         } else {
           // Si no tiene `userType`, mostramos el modal para completar
           console.log("Usuario no tiene tipo registrado, mostrar modal.");
@@ -104,7 +105,7 @@ function Login() {
       });
       console.log("Datos de usuario actualizados:", { userType, phoneNumber });
       setModalIsOpen(false); // Cerramos el modal
-      navigate("/home"); // Redirigimos a Home después de guardar
+      navigate("/tienda"); // Redirigimos a Home después de guardar
     } catch (error) {
       setError("Error al guardar los datos: " + error.message);
     }
