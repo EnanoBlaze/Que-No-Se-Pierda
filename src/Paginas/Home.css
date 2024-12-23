@@ -1,0 +1,99 @@
+/* Home.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8; /* Color de fondo suave */
+}
+
+.home-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Sección Hero */
+.hero-section {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  border-radius: 15px; /* Esquinas redondeadas */
+}
+
+.cta-button {
+  background-color: #ff6b6b; /* Color atractivo */
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 25px; /* Botón más redondeado */
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Añadir efecto de transformación */
+}
+
+.cta-button:hover {
+  background-color: #ff4c4c; /* Color más oscuro al pasar el mouse */
+  transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+}
+
+/* Secciones Generales */
+.about-section, .features-section, .products-section {
+  background-color: white;
+  border-radius: 15px; /* Esquinas redondeadas */
+  padding: 30px; /* Espaciado interno aumentado */
+  margin-top: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.1); /* Sombra más pronunciada */
+}
+
+/* Títulos de Sección */
+.section-title {
+  font-size: 2.5em; /* Títulos más grandes */
+  color: #333;
+  text-align: center; /* Centrar títulos */
+}
+
+/* Contenido de la Sección Sobre Nosotros */
+.about-content p, .about-content ul {
+  line-height: 1.8; /* Mayor espacio entre líneas */
+}
+
+/* Sección de Características */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas flexibles */
+  gap: 20px; /* Espacio entre tarjetas */
+}
+
+.feature-card {
+  background-color: #e7f3fe; /* Color de fondo suave para tarjetas */
+  border-radius: 10px;
+  padding: 20px; /* Espaciado interno aumentado en tarjetas */
+}
+
+/* Sección de Productos */
+.products-preview {
+    display:grid; 
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); 
+    gap:20px; /* Espacio entre productos */
+    margin-top: -10px; /* Ajustar el margen superior para alineación visual */
+}
+
+.product-card {
+    background-color: #fff; /* Fondo blanco para las tarjetas de productos */
+    border-radius:10px; 
+    overflow:hidden; /* Esquinas redondeadas en imágenes también */
+    box-shadow:0px2px10px rgba(0,0,0,0.1); /* Sombra sutil en tarjetas de productos */
+}
+
+.product-card img {
+    width:100%; 
+    height:auto; 
+    border-bottom-left-radius:10px; 
+    border-bottom-right-radius:10px; 
+}

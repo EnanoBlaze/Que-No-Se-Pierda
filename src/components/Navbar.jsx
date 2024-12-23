@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
@@ -43,11 +42,20 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar-horizontal">
+    <nav className="navbar-horizontal" style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      zIndex: 9999,
+      height: '60px',
+      overflow: 'hidden',
+      whiteSpace: 'nowrap'
+    }}>
       <div className="navbar-logo">
         <Link to="/">QUE NO SE PIERDA</Link>
       </div>
-      <ul className="navbar-links">
+      <ul className="navbar-links" style={{flexWrap: 'nowrap'}}>
         {userType === "vendedor" && (
           <li>
             <Link to="/subir-producto">Subir Productos</Link>
