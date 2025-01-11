@@ -1,7 +1,7 @@
-// src/Paginas/Home.js
+// src/Paginas/Tienda.js
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
-import { auth, db, storage } from "../firebase";
+import { auth, db } from "../firebase";
 import "./Tienda.css";
 import { useCarrito } from "../context/CarritoContext";
 
@@ -10,6 +10,15 @@ function Tienda() {
   const { carrito, agregarProducto } = useCarrito();
   const [userRole, setUserRole] = useState("");
   const [supermercadoActual, setSupermercadoActual] = useState(null);
+
+  // Obtener la fecha actual en formato 'yyyy-mm-dd'
+  const obtenerFechaActual = () => {
+    const hoy = new Date();
+    const dia = hoy.getDate().toString().padStart(2, "0");
+    const mes = (hoy.getMonth() + 1).toString().padStart(2, "0");
+    const anio = hoy.getFullYear();
+    return `${anio}-${mes}-${dia}`;
+  };
 
   useEffect(() => {
     const fetchUserRole = async () => {
@@ -99,39 +108,46 @@ function Tienda() {
               <div key={vendedorId} className="vendedor-section">
                 <h3>{vendedor.vendedorNombre}</h3>
                 <div className="productos-grid">
-                  {vendedor.productos.map((product) => (
-                    <div key={product.id} className="producto-card">
-                      <img
-                        src={product.imagen}
-                        alt={product.nombre}
-                        className="product-image"
-                      />
-                      <h3>{product.nombre}</h3>
-                      <p className="precio-original">
-                        Precio Original: ${product.precio}
-                      </p>
-                      <p className="precio-descuento">
-                        Precio con Descuento: ${product.precioConDescuento}
-                      </p>
-                      <p>Cantidad disponible: {product.cantidad}</p>
-                      <p
-                        className="fecha-vencimiento"
-                        style={{ color: "green" }}
-                      >
-                        Fecha de Vencimiento: {product.fechaVencimiento}
-                      </p>
-                      {product.cantidad === 0 ? (
-                        <div className="agotado-banner">AGOTADO</div>
-                      ) : (
-                        <button
-                          className="add-to-cart-button"
-                          onClick={() => handleAgregarProducto(product)}
+                  {vendedor.productos.map((product) => {
+                    const vencido =
+                      new Date(product.fechaVencimiento) <
+                      new Date(obtenerFechaActual());
+                    return (
+                      <div key={product.id} className="producto-card">
+                        <img
+                          src={product.imagen}
+                          alt={product.nombre}
+                          className="product-image"
+                        />
+                        <h3>{product.nombre}</h3>
+                        <p className="precio-original">
+                          Precio Original: ${product.precio}
+                        </p>
+                        <p className="precio-descuento">
+                          Precio con Descuento: ${product.precioConDescuento}
+                        </p>
+                        <p>Cantidad disponible: {product.cantidad}</p>
+                        <p
+                          className="fecha-vencimiento"
+                          style={{ color: vencido ? "red" : "green" }}
                         >
-                          Agregar
-                        </button>
-                      )}
-                    </div>
-                  ))}
+                          Fecha de Vencimiento: {product.fechaVencimiento}
+                        </p>
+                        {product.cantidad === 0 ? (
+                          <div className="agotado-banner">AGOTADO</div>
+                        ) : vencido ? (
+                          <div className="agotado-banner">CADUCADO</div>
+                        ) : (
+                          <button
+                            className="add-to-cart-button"
+                            onClick={() => handleAgregarProducto(product)}
+                          >
+                            Agregar
+                          </button>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );

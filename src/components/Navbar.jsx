@@ -74,9 +74,6 @@ const Navbar = () => {
             Perfil
           </Link>
         </li>
-        <li>
-          <Link to="/contacto">Contáctanos</Link>
-        </li>
         {user ? (
           <li>
             <button className="navbar-logout" onClick={handleLogout}>
