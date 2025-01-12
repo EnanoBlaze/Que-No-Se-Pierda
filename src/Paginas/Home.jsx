@@ -1,44 +1,57 @@
-import React from "react";
+// src/Paginas/Home.js
+import React, { useEffect, useState } from "react";
+import { auth, db } from "../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
-const Redirect = () => {
-  window.location.href = "/tienda"; 
-};
+const Home = () => {
+  const [productos, setProductos] = useState([]);
+  const navigate = useNavigate();
 
-export default function Home() {
+  useEffect(() => {
+    const fetchProductos = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "productos"));
+        const fechaActual = new Date();
+        const productosFiltrados = querySnapshot.docs
+          .map((doc) => {
+            const data = doc.data();
+            const fechaVencimiento = new Date(data.fechaVencimiento);
+            const descuento = data.precio * 0.2; // 20% de descuento
+            const precioConDescuento = data.precio - descuento;
+
+            return {
+              id: doc.id,
+              ...data,
+              precioConDescuento: precioConDescuento.toFixed(2), // Mostrar con 2 decimales
+              fechaVencimiento,
+            };
+          })
+          .filter((producto) => producto.fechaVencimiento >= fechaActual) // Filtrar productos no vencidos
+          .slice(0, 3); // Mostrar máximo 3 productos
+
+        setProductos(productosFiltrados);
+      } catch (error) {
+        console.error("Error al obtener los productos:", error);
+      }
+    };
+
+    fetchProductos();
+  }, []);
+
+  const handleRedirect = () => {
+    const user = auth.currentUser;
+    if (!user) {
+      navigate("/login"); // Redirigir al login si no está autenticado
+    } else {
+      navigate("/tienda"); // Redirigir a la tienda si está autenticado
+    }
+  };
+  
   return (
     <div className="home-container">
-      <section className="hero-section">
-        <picture>
-          <source 
-            media="(max-width: 480px)"
-            srcSet="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&w=480&h=320&fit=crop"
-          />
-          <source 
-            media="(max-width: 768px)"
-            srcSet="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&w=600&h=400&fit=crop"
-          />
-          <source 
-            media="(max-width: 1200px)"
-            srcSet="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&w=800&h=500&fit=crop"
-          />
-          <img 
-            src="https://images.unsplash.com/photo-1506617420156-8e4536971650?ixlib=rb-4.0.3&w=800&h=500&fit=crop"
-            alt="Productos frescos y saludables"
-            className="hero-image"
-            loading="lazy"
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              objectFit: 'cover'
-            }}
-          />
-        </picture>
-        <button className="cta-button" onClick={Redirect}>
-          Ver Ofertas
-        </button>
-      </section>
-
+      {/* Sección Nuestra Misión */}
       <section className="about-section">
         <h2 className="section-title">Nuestra Misión</h2>
         <div className="about-content">
@@ -56,6 +69,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sección Productos Destacados */}
+      <section className="products-section">
+        <h2 className="section-title">Vista Previa de Productos</h2>
+        <div className="productos-grid">
+          {productos.map((producto) => (
+            <div
+              key={producto.id}
+              className="producto-card"
+              onClick={handleRedirect}
+            >
+              <img
+                src={producto.imagen}
+                alt={producto.nombre}
+                className="product-image"
+              />
+              <h3>{producto.nombre}</h3>
+              <p className="precio-original">
+                Precio Original: ${producto.precio}
+              </p>
+              <p className="precio-descuento">
+                Precio con Descuento: ${producto.precioConDescuento}
+              </p>
+              <p>Cantidad disponible: {producto.cantidad}</p>
+              <p
+                className="fecha-vencimiento"
+                style={{ color: "green" }}
+              >
+                Fecha de Vencimiento: {producto.fechaVencimiento.toISOString().split("T")[0]}
+              </p>
+            </div>
+          ))}
+        </div>
+        <button className="cta-button" onClick={handleRedirect}>
+          Ver Ofertas
+        </button>
+      </section>
+
+      {/* Sección Cómo Funciona */}
       <section className="features-section">
         <h2 className="section-title">¿Cómo Funciona?</h2>
         <div className="features-grid">
@@ -73,50 +124,8 @@ export default function Home() {
           </article>
         </div>
       </section>
-
-      <section className="products-section">
-        <h2 className="section-title">Categorías Populares</h2>
-        <div className="products-preview">
-          <article className="product-card">
-            <picture>
-              <source 
-                media="(max-width: 480px)"
-                srcSet="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=480"
-              />
-              <source 
-                media="(max-width: 768px)"
-                srcSet="https://images.unsplash.com/photo-1608686207856-001b95cf60ca?w=768"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1608686207856-001b95cf60ca"
-                alt="Panadería y repostería"
-                loading="lazy"
-              />
-            </picture>
-            <h3>Panadería</h3>
-            <p>Pan fresco y productos horneados a precios increíbles.</p>
-          </article>
-          <article className="product-card">
-            <picture>
-              <source 
-                media="(max-width: 480px)"
-                srcSet="https://images.unsplash.com/photo-1542838132-92c53300491e?w=480"
-              />
-              <source 
-                media="(max-width: 768px)"
-                srcSet="https://images.unsplash.com/photo-1542838132-92c53300491e?w=768"
-              />
-              <img 
-                src="https://images.unsplash.com/photo-1542838132-92c53300491e"
-                alt="Frutas y verduras frescas"
-                loading="lazy"
-              />
-            </picture>
-            <h3>Frutas y Verduras</h3>
-            <p>Productos frescos locales a precios reducidos.</p>
-          </article>
-        </div>
-      </section>
     </div>
   );
-}
+};
+
+export default Home;
